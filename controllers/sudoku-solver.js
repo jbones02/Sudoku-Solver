@@ -9,7 +9,7 @@ class SudokuSolver {
     return false;
   }
 
-  checkRowPlacement(sudokuPuzzle, row, val) {
+  rowPlacementIsValid(sudokuPuzzle, row, val) {
     const rowToCheck = sudokuPuzzle.squares[row];
     if (rowToCheck.includes(val)) {
       return false;
@@ -17,7 +17,7 @@ class SudokuSolver {
     return true;
   }
 
-  checkColPlacement(sudokuPuzzle, col, val) {
+  colPlacementIsValid(sudokuPuzzle, col, val) {
     let colToCheck = [];
 
     // Get vals in col being checked
@@ -32,44 +32,32 @@ class SudokuSolver {
     return true;
   }
 
-  getRegionNumber() {
-    /* Region numbering convention:
-          0 1 2
-          3 4 5
-          6 7 8
-    */
-    if (row <= 2) {
-      if (col <=2) {
-        return 0;
-      } else if (col <= 5) {
-        return 1;
-      } else {
-        return 2;
-      }
-    } else if (row <=5) {
-      if (col <=2) {
-        return 3;
-      } else if (col <=5) {
-        return 4;
-      } else {
-        return 5;
-      }
-    } else {
-      if (col <= 2) {
-        return 6;
-      } else if (col <= 5) {
-        return 7;
-      } else {
-        return 8;
+  getSquaresInRegion(sudokuPuzzle, regionNumber) {
+    let squaresInRegion = [];
+
+    const startRow = Math.floor(regionNumber / 3) * 3;
+    const startCol = (regionNumber % 3) * 3;
+
+    for (let i = 0; i < 3; r++) {
+      for (let j = 0; j < 3; j++) {
+        squaresInRegion.push(sudokuPuzzle.squares[startRow + r][startCol + c]);
       }
     }
+
+    return squaresInRegion;
   }
 
-  checkRegionPlacement(sudokuPuzzle, row, col, val) {
+  regionPlacementIsValid(sudokuPuzzle, row, col, val) {
+    let squaresInRegion;
+    this.getSquaresInRegion(sudokuPuzzle, squaresInRegion);
 
+    if (squaresInRegion.includes(val)) {
+      return false;
+    }
+    return true;
   }
 
-  solverRecurse(sudokuPuzzle) {
+  solveRecurse(sudokuPuzzle) {
     
   }
 
