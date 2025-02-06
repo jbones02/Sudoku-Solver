@@ -13,16 +13,16 @@ class SudokuPuzzle {
         }
     }
 
-    isSolved() {
-        for (let curRow = 0; curRow < this.DIMENSIONS; curRow++) {
-            for (let curCol = 0; curCol < this.DIMENSIONS; curCol++) {
-                if (this.squares[curRow][curCol] === '.') {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
+    // isSolved() {
+    //     for (let curRow = 0; curRow < this.DIMENSIONS; curRow++) {
+    //         for (let curCol = 0; curCol < this.DIMENSIONS; curCol++) {
+    //             if (this.squares[curRow][curCol] === '.') {
+    //                 return false;
+    //             }
+    //         }
+    //     }
+    //     return true;
+    // }
 
     getNextEmptySquareIndices() {
         for (let curRow = 0; curRow < this.DIMENSIONS; curRow++) {
