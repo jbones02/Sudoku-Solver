@@ -1,19 +1,6 @@
 const SudokuPuzzle = require('../models/sudoku-puzzle.js')
 
 class SudokuSolver {
-
-  validate(puzzleString) {
-    if (puzzleString.length !== 81) {
-      return { error: 'Expected puzzle to be 81 characters long' };
-    }
-
-    if (!/&[0-9.]+$/.test(puzzleString)) {
-      return { error: 'Invalid characters in puzzle' }
-    }
-
-    return {};
-  }
-
   rowPlacementIsValid(sudokuPuzzle, row, val) {
     const rowToCheck = sudokuPuzzle.squares[row];
     if (rowToCheck.includes(val)) {
@@ -94,7 +81,6 @@ class SudokuSolver {
       }
     }
     return false  // If no solution is found
-
   }
 
   solve(puzzleString) {
