@@ -4,7 +4,8 @@ class SudokuSolver {
   rowPlacementIsValid(sudokuPuzzle, rowIndex, colIndex, val) {
     let squaresInRow = [...sudokuPuzzle.squares[rowIndex]];
     squaresInRow[colIndex] = '.';  // Exclude square being checked
-    return !squaresInRow.includes(val);
+    console.log('result in function: ', !squaresInRow.includes(val.toString()));
+    return !squaresInRow.includes(val.toString());
 }
 
   colPlacementIsValid(sudokuPuzzle, rowIndex, colIndex, val) {
@@ -16,7 +17,7 @@ class SudokuSolver {
     }
     squaresInCol[rowIndex] = '.'  // Exclude square being checked
 
-    return !squaresInCol.includes(val);
+    return !squaresInCol.includes(val.toString());
   }
 
   getRegionNumber(row, col) {
@@ -46,7 +47,7 @@ class SudokuSolver {
   regionPlacementIsValid(sudokuPuzzle, rowIndex, colIndex, val) {
     const regionNumber = this.getRegionNumber(rowIndex, colIndex)
     let squaresInRegion = this.getSquaresInRegion(sudokuPuzzle, regionNumber, rowIndex, colIndex);
-    return !squaresInRegion.includes(val);
+    return !squaresInRegion.includes(val.toString());
   }
 
   placementIsValid(sudokuPuzzle, rowIndex, colIndex, val) {
