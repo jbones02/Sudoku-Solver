@@ -4,7 +4,6 @@ class SudokuSolver {
   rowPlacementIsValid(sudokuPuzzle, rowIndex, colIndex, val) {
     let squaresInRow = [...sudokuPuzzle.squares[rowIndex]];
     squaresInRow[colIndex] = '.';  // Exclude square being checked
-    console.log('result in function: ', !squaresInRow.includes(val.toString()));
     return !squaresInRow.includes(val.toString());
 }
 

@@ -41,8 +41,8 @@ module.exports = function (app) {
 
         const conflict = solver.getConflict(puzzleString, rowIndex, colIndex, val);
 
-        const returnObj = !conflict ? { valid: true } : { valid: false, conflict: conflict };
-        return res.status(200).json(returnObj);
+        const responseObj = !conflict ? { valid: true } : { valid: false, conflict: conflict };
+        return res.status(200).json(responseObj);
       } catch (err) {
         console.error(err);
         return res.status(500).json({ error: 'Server error' });
