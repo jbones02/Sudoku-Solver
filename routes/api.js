@@ -64,8 +64,6 @@ module.exports = function (app) {
         }
 
         const result = solver.solve(unsolvedPuzzleString);
-        console.log(unsolvedPuzzleString);
-        console.log(result);
         return res.status(200).json(result);
       } catch (err) {
         console.error(err);
